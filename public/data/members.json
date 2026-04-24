@@ -1,0 +1,804 @@
+{
+  "members": [
+    {
+      "id": "A000382",
+      "name": "Angela D. Alsobrooks",
+      "party": "D",
+      "chamber": "senate",
+      "state": "MD",
+      "bio": "Democratic senator from Maryland. Class I."
+    },
+    {
+      "id": "A000383",
+      "name": "Alan Armstrong",
+      "party": "R",
+      "chamber": "senate",
+      "state": "OK",
+      "bio": "Republican senator from Oklahoma. Class II."
+    },
+    {
+      "id": "B001230",
+      "name": "Tammy Baldwin",
+      "party": "D",
+      "chamber": "senate",
+      "state": "WI",
+      "bio": "Democratic senator from Wisconsin. Class I."
+    },
+    {
+      "id": "B001299",
+      "name": "Jim Banks",
+      "party": "R",
+      "chamber": "senate",
+      "state": "IN",
+      "bio": "Republican senator from Indiana. Class I."
+    },
+    {
+      "id": "B001261",
+      "name": "John Barrasso",
+      "party": "R",
+      "chamber": "senate",
+      "state": "WY",
+      "bio": "Republican senator from Wyoming. Class I. Majority Whip."
+    },
+    {
+      "id": "B001267",
+      "name": "Michael F. Bennet",
+      "party": "D",
+      "chamber": "senate",
+      "state": "CO",
+      "bio": "Democratic senator from Colorado. Class III."
+    },
+    {
+      "id": "B001243",
+      "name": "Marsha Blackburn",
+      "party": "R",
+      "chamber": "senate",
+      "state": "TN",
+      "bio": "Republican senator from Tennessee. Class I."
+    },
+    {
+      "id": "B001277",
+      "name": "Richard Blumenthal",
+      "party": "D",
+      "chamber": "senate",
+      "state": "CT",
+      "bio": "Democratic senator from Connecticut. Class III."
+    },
+    {
+      "id": "B001303",
+      "name": "Lisa Blunt Rochester",
+      "party": "D",
+      "chamber": "senate",
+      "state": "DE",
+      "bio": "Democratic senator from Delaware. Class I."
+    },
+    {
+      "id": "B001288",
+      "name": "Cory A. Booker",
+      "party": "D",
+      "chamber": "senate",
+      "state": "NJ",
+      "bio": "Democratic senator from New Jersey. Class II."
+    },
+    {
+      "id": "B001236",
+      "name": "John Boozman",
+      "party": "R",
+      "chamber": "senate",
+      "state": "AR",
+      "bio": "Republican senator from Arkansas. Class III."
+    },
+    {
+      "id": "B001319",
+      "name": "Katie Boyd Britt",
+      "party": "R",
+      "chamber": "senate",
+      "state": "AL",
+      "bio": "Republican senator from Alabama. Class III."
+    },
+    {
+      "id": "B001305",
+      "name": "Ted Budd",
+      "party": "R",
+      "chamber": "senate",
+      "state": "NC",
+      "bio": "Republican senator from North Carolina. Class III."
+    },
+    {
+      "id": "C000127",
+      "name": "Maria Cantwell",
+      "party": "D",
+      "chamber": "senate",
+      "state": "WA",
+      "bio": "Democratic senator from Washington. Class I."
+    },
+    {
+      "id": "C001047",
+      "name": "Shelley Moore Capito",
+      "party": "R",
+      "chamber": "senate",
+      "state": "WV",
+      "bio": "Republican senator from West Virginia. Class II."
+    },
+    {
+      "id": "C001075",
+      "name": "Bill Cassidy",
+      "party": "R",
+      "chamber": "senate",
+      "state": "LA",
+      "bio": "Republican senator from Louisiana. Class II."
+    },
+    {
+      "id": "C001035",
+      "name": "Susan M. Collins",
+      "party": "R",
+      "chamber": "senate",
+      "state": "ME",
+      "bio": "Republican senator from Maine. Class II."
+    },
+    {
+      "id": "C001088",
+      "name": "Christopher A. Coons",
+      "party": "D",
+      "chamber": "senate",
+      "state": "DE",
+      "bio": "Democratic senator from Delaware. Class II."
+    },
+    {
+      "id": "C001056",
+      "name": "John Cornyn",
+      "party": "R",
+      "chamber": "senate",
+      "state": "TX",
+      "bio": "Republican senator from Texas. Class II."
+    },
+    {
+      "id": "C001113",
+      "name": "Catherine Cortez Masto",
+      "party": "D",
+      "chamber": "senate",
+      "state": "NV",
+      "bio": "Democratic senator from Nevada. Class III."
+    },
+    {
+      "id": "C001095",
+      "name": "Tom Cotton",
+      "party": "R",
+      "chamber": "senate",
+      "state": "AR",
+      "bio": "Republican senator from Arkansas. Class II."
+    },
+    {
+      "id": "C001096",
+      "name": "Kevin Cramer",
+      "party": "R",
+      "chamber": "senate",
+      "state": "ND",
+      "bio": "Republican senator from North Dakota. Class I."
+    },
+    {
+      "id": "C000880",
+      "name": "Mike Crapo",
+      "party": "R",
+      "chamber": "senate",
+      "state": "ID",
+      "bio": "Republican senator from Idaho. Class III."
+    },
+    {
+      "id": "C001098",
+      "name": "Ted Cruz",
+      "party": "R",
+      "chamber": "senate",
+      "state": "TX",
+      "bio": "Republican senator from Texas. Class I."
+    },
+    {
+      "id": "C001114",
+      "name": "John R. Curtis",
+      "party": "R",
+      "chamber": "senate",
+      "state": "UT",
+      "bio": "Republican senator from Utah. Class I."
+    },
+    {
+      "id": "D000618",
+      "name": "Steve Daines",
+      "party": "R",
+      "chamber": "senate",
+      "state": "MT",
+      "bio": "Republican senator from Montana. Class II."
+    },
+    {
+      "id": "D000622",
+      "name": "Tammy Duckworth",
+      "party": "D",
+      "chamber": "senate",
+      "state": "IL",
+      "bio": "Democratic senator from Illinois. Class III."
+    },
+    {
+      "id": "D000563",
+      "name": "Richard J. Durbin",
+      "party": "D",
+      "chamber": "senate",
+      "state": "IL",
+      "bio": "Democratic senator from Illinois. Class II. Democratic Whip."
+    },
+    {
+      "id": "E000295",
+      "name": "Joni Ernst",
+      "party": "R",
+      "chamber": "senate",
+      "state": "IA",
+      "bio": "Republican senator from Iowa. Class II."
+    },
+    {
+      "id": "F000479",
+      "name": "John Fetterman",
+      "party": "D",
+      "chamber": "senate",
+      "state": "PA",
+      "bio": "Democratic senator from Pennsylvania. Class III."
+    },
+    {
+      "id": "F000463",
+      "name": "Deb Fischer",
+      "party": "R",
+      "chamber": "senate",
+      "state": "NE",
+      "bio": "Republican senator from Nebraska. Class I."
+    },
+    {
+      "id": "G000574",
+      "name": "Ruben Gallego",
+      "party": "D",
+      "chamber": "senate",
+      "state": "AZ",
+      "bio": "Democratic senator from Arizona. Class I."
+    },
+    {
+      "id": "G000555",
+      "name": "Kirsten E. Gillibrand",
+      "party": "D",
+      "chamber": "senate",
+      "state": "NY",
+      "bio": "Democratic senator from New York. Class I."
+    },
+    {
+      "id": "G000359",
+      "name": "Lindsey Graham",
+      "party": "R",
+      "chamber": "senate",
+      "state": "SC",
+      "bio": "Republican senator from South Carolina. Class II."
+    },
+    {
+      "id": "G000386",
+      "name": "Chuck Grassley",
+      "party": "R",
+      "chamber": "senate",
+      "state": "IA",
+      "bio": "Republican senator from Iowa. Class III. President Pro Tempore."
+    },
+    {
+      "id": "H000601",
+      "name": "Bill Hagerty",
+      "party": "R",
+      "chamber": "senate",
+      "state": "TN",
+      "bio": "Republican senator from Tennessee. Class II."
+    },
+    {
+      "id": "H001076",
+      "name": "Margaret Wood Hassan",
+      "party": "D",
+      "chamber": "senate",
+      "state": "NH",
+      "bio": "Democratic senator from New Hampshire. Class III."
+    },
+    {
+      "id": "H001089",
+      "name": "Josh Hawley",
+      "party": "R",
+      "chamber": "senate",
+      "state": "MO",
+      "bio": "Republican senator from Missouri. Class I."
+    },
+    {
+      "id": "H001046",
+      "name": "Martin Heinrich",
+      "party": "D",
+      "chamber": "senate",
+      "state": "NM",
+      "bio": "Democratic senator from New Mexico. Class I."
+    },
+    {
+      "id": "H000273",
+      "name": "John W. Hickenlooper",
+      "party": "D",
+      "chamber": "senate",
+      "state": "CO",
+      "bio": "Democratic senator from Colorado. Class II."
+    },
+    {
+      "id": "H001042",
+      "name": "Mazie K. Hirono",
+      "party": "D",
+      "chamber": "senate",
+      "state": "HI",
+      "bio": "Democratic senator from Hawaii. Class I."
+    },
+    {
+      "id": "H001061",
+      "name": "John Hoeven",
+      "party": "R",
+      "chamber": "senate",
+      "state": "ND",
+      "bio": "Republican senator from North Dakota. Class III."
+    },
+    {
+      "id": "H001104",
+      "name": "Jon Husted",
+      "party": "R",
+      "chamber": "senate",
+      "state": "OH",
+      "bio": "Republican senator from Ohio. Class III."
+    },
+    {
+      "id": "H001079",
+      "name": "Cindy Hyde-Smith",
+      "party": "R",
+      "chamber": "senate",
+      "state": "MS",
+      "bio": "Republican senator from Mississippi. Class II."
+    },
+    {
+      "id": "J000293",
+      "name": "Ron Johnson",
+      "party": "R",
+      "chamber": "senate",
+      "state": "WI",
+      "bio": "Republican senator from Wisconsin. Class III."
+    },
+    {
+      "id": "J000312",
+      "name": "James C. Justice",
+      "party": "R",
+      "chamber": "senate",
+      "state": "WV",
+      "bio": "Republican senator from West Virginia. Class I."
+    },
+    {
+      "id": "K000384",
+      "name": "Tim Kaine",
+      "party": "D",
+      "chamber": "senate",
+      "state": "VA",
+      "bio": "Democratic senator from Virginia. Class I."
+    },
+    {
+      "id": "K000377",
+      "name": "Mark Kelly",
+      "party": "D",
+      "chamber": "senate",
+      "state": "AZ",
+      "bio": "Democratic senator from Arizona. Class III."
+    },
+    {
+      "id": "K000393",
+      "name": "John Kennedy",
+      "party": "R",
+      "chamber": "senate",
+      "state": "LA",
+      "bio": "Republican senator from Louisiana. Class III."
+    },
+    {
+      "id": "K000394",
+      "name": "Andy Kim",
+      "party": "D",
+      "chamber": "senate",
+      "state": "NJ",
+      "bio": "Democratic senator from New Jersey. Class I."
+    },
+    {
+      "id": "K000383",
+      "name": "Angus S., Jr. King",
+      "party": "I",
+      "chamber": "senate",
+      "state": "ME",
+      "bio": "Independent senator from Maine. Class I."
+    },
+    {
+      "id": "K000367",
+      "name": "Amy Klobuchar",
+      "party": "D",
+      "chamber": "senate",
+      "state": "MN",
+      "bio": "Democratic senator from Minnesota. Class I."
+    },
+    {
+      "id": "L000575",
+      "name": "James Lankford",
+      "party": "R",
+      "chamber": "senate",
+      "state": "OK",
+      "bio": "Republican senator from Oklahoma. Class III."
+    },
+    {
+      "id": "L000577",
+      "name": "Mike Lee",
+      "party": "R",
+      "chamber": "senate",
+      "state": "UT",
+      "bio": "Republican senator from Utah. Class III."
+    },
+    {
+      "id": "L000570",
+      "name": "Ben Ray Luján",
+      "party": "D",
+      "chamber": "senate",
+      "state": "NM",
+      "bio": "Democratic senator from New Mexico. Class II."
+    },
+    {
+      "id": "L000571",
+      "name": "Cynthia M. Lummis",
+      "party": "R",
+      "chamber": "senate",
+      "state": "WY",
+      "bio": "Republican senator from Wyoming. Class II."
+    },
+    {
+      "id": "M000133",
+      "name": "Edward J. Markey",
+      "party": "D",
+      "chamber": "senate",
+      "state": "MA",
+      "bio": "Democratic senator from Massachusetts. Class II."
+    },
+    {
+      "id": "M001198",
+      "name": "Roger Marshall",
+      "party": "R",
+      "chamber": "senate",
+      "state": "KS",
+      "bio": "Republican senator from Kansas. Class II."
+    },
+    {
+      "id": "M000355",
+      "name": "Mitch McConnell",
+      "party": "R",
+      "chamber": "senate",
+      "state": "KY",
+      "bio": "Republican senator from Kentucky. Class II."
+    },
+    {
+      "id": "M001243",
+      "name": "David McCormick",
+      "party": "R",
+      "chamber": "senate",
+      "state": "PA",
+      "bio": "Republican senator from Pennsylvania. Class I."
+    },
+    {
+      "id": "M001176",
+      "name": "Jeff Merkley",
+      "party": "D",
+      "chamber": "senate",
+      "state": "OR",
+      "bio": "Democratic senator from Oregon. Class II."
+    },
+    {
+      "id": "M001244",
+      "name": "Ashley Moody",
+      "party": "R",
+      "chamber": "senate",
+      "state": "FL",
+      "bio": "Republican senator from Florida. Class III."
+    },
+    {
+      "id": "M000934",
+      "name": "Jerry Moran",
+      "party": "R",
+      "chamber": "senate",
+      "state": "KS",
+      "bio": "Republican senator from Kansas. Class III."
+    },
+    {
+      "id": "M001242",
+      "name": "Bernie Moreno",
+      "party": "R",
+      "chamber": "senate",
+      "state": "OH",
+      "bio": "Republican senator from Ohio. Class I."
+    },
+    {
+      "id": "M001153",
+      "name": "Lisa Murkowski",
+      "party": "R",
+      "chamber": "senate",
+      "state": "AK",
+      "bio": "Republican senator from Alaska. Class III."
+    },
+    {
+      "id": "M001169",
+      "name": "Christopher Murphy",
+      "party": "D",
+      "chamber": "senate",
+      "state": "CT",
+      "bio": "Democratic senator from Connecticut. Class I."
+    },
+    {
+      "id": "M001111",
+      "name": "Patty Murray",
+      "party": "D",
+      "chamber": "senate",
+      "state": "WA",
+      "bio": "Democratic senator from Washington. Class III."
+    },
+    {
+      "id": "O000174",
+      "name": "Jon Ossoff",
+      "party": "D",
+      "chamber": "senate",
+      "state": "GA",
+      "bio": "Democratic senator from Georgia. Class II."
+    },
+    {
+      "id": "P000145",
+      "name": "Alex Padilla",
+      "party": "D",
+      "chamber": "senate",
+      "state": "CA",
+      "bio": "Democratic senator from California. Class III."
+    },
+    {
+      "id": "P000603",
+      "name": "Rand Paul",
+      "party": "R",
+      "chamber": "senate",
+      "state": "KY",
+      "bio": "Republican senator from Kentucky. Class III."
+    },
+    {
+      "id": "P000595",
+      "name": "Gary C. Peters",
+      "party": "D",
+      "chamber": "senate",
+      "state": "MI",
+      "bio": "Democratic senator from Michigan. Class II."
+    },
+    {
+      "id": "R000122",
+      "name": "Jack Reed",
+      "party": "D",
+      "chamber": "senate",
+      "state": "RI",
+      "bio": "Democratic senator from Rhode Island. Class II."
+    },
+    {
+      "id": "R000618",
+      "name": "Pete Ricketts",
+      "party": "R",
+      "chamber": "senate",
+      "state": "NE",
+      "bio": "Republican senator from Nebraska. Class II."
+    },
+    {
+      "id": "R000584",
+      "name": "James E. Risch",
+      "party": "R",
+      "chamber": "senate",
+      "state": "ID",
+      "bio": "Republican senator from Idaho. Class II."
+    },
+    {
+      "id": "R000608",
+      "name": "Jacky Rosen",
+      "party": "D",
+      "chamber": "senate",
+      "state": "NV",
+      "bio": "Democratic senator from Nevada. Class I."
+    },
+    {
+      "id": "R000605",
+      "name": "Mike Rounds",
+      "party": "R",
+      "chamber": "senate",
+      "state": "SD",
+      "bio": "Republican senator from South Dakota. Class II."
+    },
+    {
+      "id": "S000033",
+      "name": "Bernard Sanders",
+      "party": "I",
+      "chamber": "senate",
+      "state": "VT",
+      "bio": "Independent senator from Vermont. Class I."
+    },
+    {
+      "id": "S001194",
+      "name": "Brian Schatz",
+      "party": "D",
+      "chamber": "senate",
+      "state": "HI",
+      "bio": "Democratic senator from Hawaii. Class III."
+    },
+    {
+      "id": "S001150",
+      "name": "Adam B. Schiff",
+      "party": "D",
+      "chamber": "senate",
+      "state": "CA",
+      "bio": "Democratic senator from California. Class I."
+    },
+    {
+      "id": "S001227",
+      "name": "Eric Schmitt",
+      "party": "R",
+      "chamber": "senate",
+      "state": "MO",
+      "bio": "Republican senator from Missouri. Class III."
+    },
+    {
+      "id": "S000148",
+      "name": "Charles E. Schumer",
+      "party": "D",
+      "chamber": "senate",
+      "state": "NY",
+      "bio": "Democratic senator from New York. Class III. Democratic Leader Chair of the Conference."
+    },
+    {
+      "id": "S001217",
+      "name": "Rick Scott",
+      "party": "R",
+      "chamber": "senate",
+      "state": "FL",
+      "bio": "Republican senator from Florida. Class I."
+    },
+    {
+      "id": "S001184",
+      "name": "Tim Scott",
+      "party": "R",
+      "chamber": "senate",
+      "state": "SC",
+      "bio": "Republican senator from South Carolina. Class III."
+    },
+    {
+      "id": "S001181",
+      "name": "Jeanne Shaheen",
+      "party": "D",
+      "chamber": "senate",
+      "state": "NH",
+      "bio": "Democratic senator from New Hampshire. Class II."
+    },
+    {
+      "id": "S001232",
+      "name": "Tim Sheehy",
+      "party": "R",
+      "chamber": "senate",
+      "state": "MT",
+      "bio": "Republican senator from Montana. Class I."
+    },
+    {
+      "id": "S001208",
+      "name": "Elissa Slotkin",
+      "party": "D",
+      "chamber": "senate",
+      "state": "MI",
+      "bio": "Democratic senator from Michigan. Class I."
+    },
+    {
+      "id": "S001203",
+      "name": "Tina Smith",
+      "party": "D",
+      "chamber": "senate",
+      "state": "MN",
+      "bio": "Democratic senator from Minnesota. Class II."
+    },
+    {
+      "id": "S001198",
+      "name": "Dan Sullivan",
+      "party": "R",
+      "chamber": "senate",
+      "state": "AK",
+      "bio": "Republican senator from Alaska. Class II."
+    },
+    {
+      "id": "T000250",
+      "name": "John Thune",
+      "party": "R",
+      "chamber": "senate",
+      "state": "SD",
+      "bio": "Republican senator from South Dakota. Class III. Majority Leader."
+    },
+    {
+      "id": "T000476",
+      "name": "Thom Tillis",
+      "party": "R",
+      "chamber": "senate",
+      "state": "NC",
+      "bio": "Republican senator from North Carolina. Class II."
+    },
+    {
+      "id": "T000278",
+      "name": "Tommy Tuberville",
+      "party": "R",
+      "chamber": "senate",
+      "state": "AL",
+      "bio": "Republican senator from Alabama. Class II."
+    },
+    {
+      "id": "V000128",
+      "name": "Chris Van Hollen",
+      "party": "D",
+      "chamber": "senate",
+      "state": "MD",
+      "bio": "Democratic senator from Maryland. Class III."
+    },
+    {
+      "id": "W000805",
+      "name": "Mark R. Warner",
+      "party": "D",
+      "chamber": "senate",
+      "state": "VA",
+      "bio": "Democratic senator from Virginia. Class II."
+    },
+    {
+      "id": "W000790",
+      "name": "Raphael G. Warnock",
+      "party": "D",
+      "chamber": "senate",
+      "state": "GA",
+      "bio": "Democratic senator from Georgia. Class III."
+    },
+    {
+      "id": "W000817",
+      "name": "Elizabeth Warren",
+      "party": "D",
+      "chamber": "senate",
+      "state": "MA",
+      "bio": "Democratic senator from Massachusetts. Class I."
+    },
+    {
+      "id": "W000800",
+      "name": "Peter Welch",
+      "party": "D",
+      "chamber": "senate",
+      "state": "VT",
+      "bio": "Democratic senator from Vermont. Class III."
+    },
+    {
+      "id": "W000802",
+      "name": "Sheldon Whitehouse",
+      "party": "D",
+      "chamber": "senate",
+      "state": "RI",
+      "bio": "Democratic senator from Rhode Island. Class I."
+    },
+    {
+      "id": "W000437",
+      "name": "Roger F. Wicker",
+      "party": "R",
+      "chamber": "senate",
+      "state": "MS",
+      "bio": "Republican senator from Mississippi. Class I."
+    },
+    {
+      "id": "W000779",
+      "name": "Ron Wyden",
+      "party": "D",
+      "chamber": "senate",
+      "state": "OR",
+      "bio": "Democratic senator from Oregon. Class III."
+    },
+    {
+      "id": "Y000064",
+      "name": "Todd Young",
+      "party": "R",
+      "chamber": "senate",
+      "state": "IN",
+      "bio": "Republican senator from Indiana. Class III."
+    }
+  ]
+}
