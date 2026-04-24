@@ -23,14 +23,14 @@ function signedScore(value: number) {
 
 function partyPressure(member: Politician) {
   if (member.party === 'D') {
-    return 'I need to know why Democrats should spend capital on this and how it protects our coalition.'
+    return 'I need a Democratic story I can defend to leadership, primary voters, and our coalition without giving Republicans an easy attack.'
   }
 
   if (member.party === 'R') {
-    return 'I need to know why Republicans should back this and how it fits our voters instead of the other side.'
+    return 'I need a Republican story I can defend to leadership, primary voters, and conservative media without handing Democrats a win.'
   }
 
-  return 'I need to know why this is more than party messaging from either side.'
+  return 'I need to know why this is more than party messaging from either machine.'
 }
 
 function initials(name: string) {
@@ -318,10 +318,10 @@ function MemberPanel({ member, bill }: { member: Politician; bill: Bill }) {
   const primaryTrait = member.traits[0]
   const concern =
     alignment > 0.72
-      ? 'I already see some alignment here, but party leadership and my base still matter.'
+      ? 'I see some alignment, but party leadership, donors, and my base still matter.'
       : alignment > 0.48
-        ? 'I am persuadable, but I need partisan cover plus specifics about who benefits.'
-        : 'This cuts against my politics, so you will need a very concrete local case and a way to sell it to my side.'
+        ? 'I am persuadable, but I need partisan cover, not just a good-government argument.'
+        : 'This cuts against my side, so you need a concrete local case and a way for me to sell it without looking like I folded.'
   const openingMessage = `I am currently leaning ${initialPosition.toUpperCase()} on this. ${concern} ${partyPressure(member)}${
     primaryTrait ? ` My ${primaryTrait} instincts are going to shape how I hear your argument.` : ''
   }`

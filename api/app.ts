@@ -158,8 +158,9 @@ function fallbackScore(
   const penalty =
     hostileHits * 0.45 +
     dismissiveHits * 0.22 +
-    (partyConflict && partyHits === 0 ? 0.22 : 0) +
-    (ideologyAlignment < 0.35 && issues.length === 0 ? 0.18 : 0);
+    (partyConflict && partyHits === 0 ? 0.34 : 0) +
+    (partyConflict && bipartisanHits === 0 ? 0.12 : 0) +
+    (ideologyAlignment < 0.35 && issues.length === 0 ? 0.22 : 0);
   const persuasion = clamp(
     0.18 + ideologyAlignment * 0.34 + specificity - penalty,
     -0.9,
@@ -172,8 +173,8 @@ function fallbackScore(
       persuasion < 0
         ? "The message damages trust by sounding hostile, dismissive, or disconnected from this member's incentives."
         : issues.length
-          ? `The argument connects to ${issues.slice(0, 2).join(" and ")}, but this member is also weighing party pressure and ideological cover.`
-          : "The argument is understandable but needs a clearer partisan or constituency-specific reason for this member to break or hold the party line.",
+          ? `The argument connects to ${issues.slice(0, 2).join(" and ")}, but party loyalty, primary voters, and leadership pressure still dominate this member's calculation.`
+          : "The argument is understandable but needs a much clearer party-line reason, base-friendly frame, or constituency payoff before this member risks their side's backlash.",
     key_issues:
       persuasion < 0
         ? ["trust loss", "poor fit"]
@@ -245,7 +246,7 @@ app.post("/api/score-lobby", async (c) => {
         {
           role: "system",
           content:
-            "Score persuasive strength of a lobbying message for this politician and bill. You must not decide or predict a vote. Return JSON only with persuasion from -1 to 1, reason, and key_issues. Politicians should behave more partisan than neutral: Democrats are protective of Democratic priorities and wary of conservative framing; Republicans are protective of Republican priorities and wary of progressive framing; Independents want pragmatic distance from both parties. Reward arguments that give the member partisan cover, appeal to their base, or frame compromise as a party win. Penalize messages that ask them to betray their party without cover, use the opposing party's talking points, are hostile, vague, or politically costly.",
+            "Score persuasive strength of a lobbying message for this politician and bill. You must not decide or predict a vote. Return JSON only with persuasion from -1 to 1, reason, and key_issues. Treat politicians as strongly partisan actors in a polarized legislature. Democrats should be hard to move toward conservative bills unless the message gives Democratic coalition cover, protects vulnerable groups, or frames the move as beating Republicans on outcomes. Republicans should be hard to move toward progressive bills unless the message gives conservative cover, limits spending/regulation, protects taxpayers/business/security/freedom, or frames the move as denying Democrats a culture-war win. Independents should resist both party brands and demand anti-establishment/pragmatic cover. Party loyalty, primary voters, donors, caucus leadership, and media attacks should matter heavily. Reward arguments that speak to the member's party base and give them a defensible partisan story. Penalize arguments that sound like the opposing party, ask them to betray their caucus, ignore partisan optics, are hostile, vague, or politically costly.",
         },
         { role: "user", content: JSON.stringify(body) },
       ],
@@ -285,9 +286,9 @@ app.post("/api/politician-reply", async (c) => {
     const trait = politician?.traits[0] ? ` As a ${politician.traits[0]},` : "";
     const partyLine =
       politician?.party === "D"
-        ? " I also need to know why Democrats should own this fight."
+        ? " I also need to know why Democrats should own this fight and how I defend it from Republican attacks."
         : politician?.party === "R"
-          ? " I also need to know why Republicans should not see this as a giveaway to the other side."
+          ? " I also need to know why Republicans should not see this as a giveaway to the other side or a betrayal of conservative voters."
           : " I also need to know why this is not just party politics dressed up as policy.";
     return c.text(
       `${trait} I hear the argument, but I need to see how this helps people back home before I move my position.${partyLine}`,
@@ -301,7 +302,7 @@ app.post("/api/politician-reply", async (c) => {
         {
           role: "system",
           content:
-            "Reply in character as the politician in 1-3 sentences. Be noticeably partisan, not generically civic-minded. Use bio, traits, party, state, and the bill summary. Democrats should sound protective of Democratic priorities, coalition groups, and attacks from the right. Republicans should sound protective of Republican priorities, taxpayers/business/security/freedom themes, and attacks from the left. Independents should sound skeptical of both party establishments. Make them ask for partisan cover, base-friendly framing, or district/state benefits before they move. Do not mention hidden scoring or vote logic.",
+            "Reply in character as the politician in 1-3 sentences. Be sharply partisan, not generically civic-minded. Use bio, traits, party, state, and the bill summary. Democrats should worry about labor, healthcare, equity, climate, coalition groups, primary voters, and Republican attack ads. Republicans should worry about taxes, spending, regulation, border/security, businesses, freedom, primary voters, and Democratic overreach. Independents should sound anti-establishment and suspicious of both party machines. The politician should often push back, ask for party-base cover, mention caucus/leadership pressure, or demand a frame they can sell to their side. Do not mention hidden scoring or vote logic.",
         },
         { role: "user", content: JSON.stringify(body) },
       ],
@@ -313,9 +314,9 @@ app.post("/api/politician-reply", async (c) => {
     const politician = body.politician;
     const partyLine =
       politician?.party === "D"
-        ? " Show me how this helps our coalition and does not hand Republicans an attack line."
+        ? " Show me how this helps our coalition, survives a primary, and does not hand Republicans an attack line."
         : politician?.party === "R"
-          ? " Show me how this fits conservative priorities and does not hand Democrats a spending win."
+          ? " Show me how this fits conservative priorities, survives a primary, and does not hand Democrats a spending win."
           : " Show me why this rises above both parties' talking points.";
     return c.text(
       `${politician?.name ?? "The member"} pauses before answering. I need an argument that connects this bill to my voters, not just a national talking point.${partyLine}`,

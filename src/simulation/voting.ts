@@ -18,14 +18,23 @@ export function initialVote(politician: Politician, bill: Bill): 'yes' | 'no' {
   return score > 0.58 ? 'yes' : 'no'
 }
 
-export function finalVoteFor(politician: Politician, bill: Bill): 'yes' | 'no' {
-  const score =
-    alignmentScore(politician, bill) +
-    politician.influence * 0.5 +
-    politician.persuasionScore * 0.22 +
-    stableNoise(`${politician.id}:${bill.title}:final:${politician.persuasionScore.toFixed(2)}`) * 0.2
+function partyConflict(politician: Politician, bill: Bill) {
+  return (politician.party === 'D' && bill.lean > 0.25) || (politician.party === 'R' && bill.lean < -0.25)
+}
 
-  return score > 0.9 ? 'yes' : 'no'
+export function finalVoteFor(politician: Politician, bill: Bill, startingVote = initialVote(politician, bill)): 'yes' | 'no' {
+  const persuasion = politician.persuasionScore
+
+  if (Math.abs(persuasion) < 0.05) return startingVote
+
+  const startingScore = startingVote === 'yes' ? 0.42 : -0.42
+  const susceptibility = 0.4 + clamp(politician.influence, 0, 2) * 0.25
+  const alignmentNudge = (alignmentScore(politician, bill) - 0.5) * 0.14
+  const partisanPenalty = partyConflict(politician, bill) ? 0.18 : 0
+  const noise = (stableNoise(`${politician.id}:${bill.title}:final:${persuasion.toFixed(2)}`) - 0.5) * 0.06
+  const score = startingScore + persuasion * susceptibility + alignmentNudge - partisanPenalty + noise
+
+  return score > 0 ? 'yes' : 'no'
 }
 
 export function createInitialVotes(members: Politician[], bill: Bill): Vote[] {
@@ -42,11 +51,15 @@ export function createInitialVotes(members: Politician[], bill: Bill): Vote[] {
 export function createFinalVotes(members: Politician[], bill: Bill, votes: Vote[]): Vote[] {
   const initialById = new Map(votes.map((vote) => [vote.politicianId, vote.initialVote]))
 
-  return members.map((member) => ({
-    politicianId: member.id,
-    initialVote: initialById.get(member.id) ?? initialVote(member, bill),
-    finalVote: finalVoteFor(member, bill),
-  }))
+  return members.map((member) => {
+    const startingVote = initialById.get(member.id) ?? initialVote(member, bill)
+
+    return {
+      politicianId: member.id,
+      initialVote: startingVote,
+      finalVote: finalVoteFor(member, bill, startingVote),
+    }
+  })
 }
 
 export function tally(votes: Vote[], mode: 'initialVote' | 'finalVote') {
