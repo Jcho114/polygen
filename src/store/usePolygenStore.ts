@@ -41,6 +41,12 @@ const emptyBill: Bill = {
   affectedGroups: [],
 }
 
+const apiUrl = import.meta.env.VITE_API_URL ?? ''
+
+function apiPath(path: string) {
+  return `${apiUrl}${path}`
+}
+
 async function postJson<T>(url: string, body: unknown): Promise<T> {
   const response = await fetch(url, {
     method: 'POST',
@@ -95,7 +101,7 @@ export const usePolygenStore = create<PolygenState>((set, get) => ({
 
     set({ isLoading: true, error: null })
     try {
-      const bill = await postJson<Bill>('/api/refine-policy', { text })
+      const bill = await postJson<Bill>(apiPath('/api/refine-policy'), { text })
       set({ bill: { ...emptyBill, ...bill, lean: clamp(bill.lean, -1, 1) }, phase: 'policy_refinement' })
     } catch (error) {
       set({ error: error instanceof Error ? error.message : 'Failed to refine policy.' })
@@ -133,7 +139,7 @@ export const usePolygenStore = create<PolygenState>((set, get) => ({
     set({ messages: [...state.messages, userMessage], isLoading: true, error: null })
 
     try {
-      const score = await postJson<LobbyScore>('/api/score-lobby', { message, politician, bill })
+      const score = await postJson<LobbyScore>(apiPath('/api/score-lobby'), { message, politician, bill })
       const persuasion = clamp(score.persuasion, -1, 1)
       const updatedMembers = get().members.map((member) => {
         if (member.id !== politician.id) return member
@@ -155,7 +161,7 @@ export const usePolygenStore = create<PolygenState>((set, get) => ({
       set({ members: updatedMembers, messages: [...get().messages, scoredMessage] })
 
       const updatedPolitician = updatedMembers.find((member) => member.id === politician.id) ?? politician
-      const reply = await postText('/api/politician-reply', { message, politician: updatedPolitician, bill })
+      const reply = await postText(apiPath('/api/politician-reply'), { message, politician: updatedPolitician, bill })
       const politicianMessage: LobbyMessage = {
         id: nextMessageId(),
         politicianId: politician.id,
