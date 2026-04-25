@@ -397,7 +397,24 @@ function Lobbying({ bill }: { bill: Bill }) {
   const selectedMemberId = usePolygenStore((state) => state.selectedMemberId)
   const selectMember = usePolygenStore((state) => state.selectMember)
   const callFinalVote = usePolygenStore((state) => state.callFinalVote)
+  const [searchQuery, setSearchQuery] = useState('')
   const selectedMember = members.find((member) => member.id === selectedMemberId) ?? members[0]
+  const normalizedSearch = searchQuery.trim().toLowerCase()
+  const searchResults = normalizedSearch
+    ? members
+        .filter((member) =>
+          [member.name, member.state, partyName(member.party)]
+            .join(' ')
+            .toLowerCase()
+            .includes(normalizedSearch),
+        )
+        .slice(0, 7)
+    : []
+
+  function chooseMember(id: string) {
+    selectMember(id)
+    setSearchQuery('')
+  }
 
   return (
     <main className="lobby-screen">
@@ -412,8 +429,43 @@ function Lobbying({ bill }: { bill: Bill }) {
       </header>
       <section className="lobby-grid">
         <div className="chamber-wrap">
-          <Tally votes={votes} mode="initialVote" />
-          <ChamberLegend />
+          <div className="chamber-meta">
+            <Tally votes={votes} mode="initialVote" />
+            <ChamberLegend />
+          </div>
+          <div className="member-search">
+            <label htmlFor="member-search">Find member</label>
+            <input
+              id="member-search"
+              type="search"
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' && searchResults[0]) {
+                  event.preventDefault()
+                  chooseMember(searchResults[0].id)
+                }
+              }}
+              placeholder="Search name, state, or party..."
+            />
+            {selectedMember ? <span className="selected-search-name">Selected: {selectedMember.name}</span> : null}
+            {normalizedSearch ? (
+              <div className="search-results">
+                {searchResults.length ? (
+                  searchResults.map((member) => (
+                    <button key={member.id} type="button" onClick={() => chooseMember(member.id)}>
+                      <span>{member.name}</span>
+                      <small>
+                        {member.state} · {partyName(member.party)}
+                      </small>
+                    </button>
+                  ))
+                ) : (
+                  <p>No matching members</p>
+                )}
+              </div>
+            ) : null}
+          </div>
           <Chamber
             members={members}
             votes={votes}
