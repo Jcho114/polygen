@@ -84,7 +84,6 @@ function fallbackBill(text: string): Bill {
     "reparations",
     "nationalize",
     "abolish",
-    "ban",
   ];
   const sweepingHits = sweepingTerms.filter((term) => lower.includes(term)).length;
   const lean = clamp((rightHits - leftHits) * 0.22 - sweepingHits * 0.08, -0.9, 0.9);
@@ -213,7 +212,7 @@ app.post("/api/refine-policy", async (c) => {
         {
           role: "system",
           content:
-            "Convert natural-language policy ideas into structured legislative bills. Return valid JSON only with title, summary, tags, lean, and affectedGroups. The lean is -1 hard left to +1 hard right. Be honest about politically extreme or sweeping proposals: universal basic income, wealth taxes, nationalization, bans, abolition, deportation, confiscation, or broad mandates should receive stronger ideological lean and polarizing tags. Do not make controversial bills sound broadly bipartisan unless the input clearly says so. Do not include markdown.",
+            "Convert natural-language policy ideas into structured legislative bills. Return valid JSON only with title, summary, tags, lean, and affectedGroups. The lean is -1 hard left to +1 hard right. Be honest about politically sweeping proposals: universal basic income, wealth taxes, nationalization, abolition, deportation, confiscation, or broad universal mandates should receive stronger ideological lean and polarizing tags. Do not treat ordinary issue-area bills like public safety, gun violence prevention, healthcare access, or education funding as extreme unless the proposal itself is maximalist. Do not make controversial bills sound broadly bipartisan unless the input clearly says so. Do not include markdown.",
         },
         { role: "user", content: text },
       ],

@@ -15,14 +15,11 @@ export function alignmentScore(politician: Politician, bill: Bill) {
 
 function controversyScore(bill: Bill) {
   const text = [bill.title, bill.summary, ...bill.tags, ...bill.affectedGroups].join(' ').toLowerCase()
-  const polarizingTerms = [
+  const sweepingTerms = [
     'universal basic income',
     'ubi',
     'wealth tax',
-    'ban',
     'abolish',
-    'mandate',
-    'mandatory',
     'all citizens',
     'guaranteed income',
     'reparations',
@@ -31,9 +28,11 @@ function controversyScore(bill: Bill) {
     'defund',
     'confiscate',
   ]
-  const hits = polarizingTerms.filter((term) => text.includes(term)).length
+  const contestedTerms = ['ban', 'mandate', 'mandatory']
+  const sweepingHits = sweepingTerms.filter((term) => text.includes(term)).length
+  const contestedHits = contestedTerms.filter((term) => text.includes(term)).length
 
-  return clamp(Math.abs(bill.lean) * 0.35 + hits * 0.16, 0, 0.75)
+  return clamp(Math.abs(bill.lean) * 0.18 + sweepingHits * 0.16 + contestedHits * 0.07, 0, 0.55)
 }
 
 function extremityPenalty(politician: Politician, bill: Bill) {
@@ -42,8 +41,8 @@ function extremityPenalty(politician: Politician, bill: Bill) {
   const sameSideButMoreModerate =
     (bill.lean < 0 && politician.ideology < 0 && politician.ideology > bill.lean) ||
     (bill.lean > 0 && politician.ideology > 0 && politician.ideology < bill.lean)
-  const moderateDefectionRisk = sameSideButMoreModerate ? moderation * controversy * 0.62 : moderation * controversy * 0.32
-  const broadSkepticism = controversy * 0.18
+  const moderateDefectionRisk = sameSideButMoreModerate ? moderation * controversy * 0.38 : moderation * controversy * 0.18
+  const broadSkepticism = controversy * 0.1
 
   return moderateDefectionRisk + broadSkepticism
 }
@@ -55,7 +54,7 @@ export function initialVote(politician: Politician, bill: Bill): 'yes' | 'no' {
     0.08 -
     extremityPenalty(politician, bill)
 
-  return score > 0.62 ? 'yes' : 'no'
+  return score > 0.59 ? 'yes' : 'no'
 }
 
 function partyConflict(politician: Politician, bill: Bill) {
@@ -71,7 +70,7 @@ export function finalVoteFor(politician: Politician, bill: Bill, startingVote = 
   const susceptibility = 0.4 + clamp(politician.influence, 0, 2) * 0.25
   const alignmentNudge = (alignmentScore(politician, bill) - 0.5) * 0.14
   const partisanPenalty = partyConflict(politician, bill) ? 0.18 : 0
-  const extremityResistance = extremityPenalty(politician, bill) * 0.45
+  const extremityResistance = extremityPenalty(politician, bill) * 0.28
   const noise = (stableNoise(`${politician.id}:${bill.title}:final:${persuasion.toFixed(2)}`) - 0.5) * 0.06
   const score = startingScore + persuasion * susceptibility + alignmentNudge - partisanPenalty - extremityResistance + noise
 
