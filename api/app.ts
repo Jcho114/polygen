@@ -75,7 +75,20 @@ function fallbackBill(text: string): Bill {
   ];
   const leftHits = leftTerms.filter((term) => lower.includes(term)).length;
   const rightHits = rightTerms.filter((term) => lower.includes(term)).length;
-  const lean = clamp((rightHits - leftHits) * 0.22, -0.85, 0.85);
+  const sweepingTerms = [
+    "ubi",
+    "universal basic income",
+    "wealth tax",
+    "all citizens",
+    "guaranteed income",
+    "reparations",
+    "nationalize",
+    "abolish",
+    "ban",
+  ];
+  const sweepingHits = sweepingTerms.filter((term) => lower.includes(term)).length;
+  const lean = clamp((rightHits - leftHits) * 0.22 - sweepingHits * 0.08, -0.9, 0.9);
+  const isPolarizing = sweepingHits > 0;
 
   return {
     title: `${text.trim().split(/\s+/).slice(0, 5).join(" ") || "Public Interest"} Act`,
@@ -84,6 +97,7 @@ function fallbackBill(text: string): Bill {
     tags: [
       "economy",
       "public policy",
+      ...(isPolarizing ? ["polarizing"] : []),
       lean < -0.15 ? "equity" : lean > 0.15 ? "markets" : "bipartisan",
     ],
     affectedGroups: ["constituents", "taxpayers", "local communities"],
@@ -199,7 +213,7 @@ app.post("/api/refine-policy", async (c) => {
         {
           role: "system",
           content:
-            "Convert natural-language policy ideas into structured legislative bills. Return valid JSON only with title, summary, tags, lean, and affectedGroups. The lean is -1 hard left to +1 hard right. Do not include markdown.",
+            "Convert natural-language policy ideas into structured legislative bills. Return valid JSON only with title, summary, tags, lean, and affectedGroups. The lean is -1 hard left to +1 hard right. Be honest about politically extreme or sweeping proposals: universal basic income, wealth taxes, nationalization, bans, abolition, deportation, confiscation, or broad mandates should receive stronger ideological lean and polarizing tags. Do not make controversial bills sound broadly bipartisan unless the input clearly says so. Do not include markdown.",
         },
         { role: "user", content: text },
       ],

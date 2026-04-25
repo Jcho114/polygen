@@ -13,9 +13,49 @@ export function alignmentScore(politician: Politician, bill: Bill) {
   return clamp(1 - Math.abs(politician.ideology - bill.lean) / 2, 0, 1)
 }
 
+function controversyScore(bill: Bill) {
+  const text = [bill.title, bill.summary, ...bill.tags, ...bill.affectedGroups].join(' ').toLowerCase()
+  const polarizingTerms = [
+    'universal basic income',
+    'ubi',
+    'wealth tax',
+    'ban',
+    'abolish',
+    'mandate',
+    'mandatory',
+    'all citizens',
+    'guaranteed income',
+    'reparations',
+    'nationalize',
+    'deport',
+    'defund',
+    'confiscate',
+  ]
+  const hits = polarizingTerms.filter((term) => text.includes(term)).length
+
+  return clamp(Math.abs(bill.lean) * 0.35 + hits * 0.16, 0, 0.75)
+}
+
+function extremityPenalty(politician: Politician, bill: Bill) {
+  const controversy = controversyScore(bill)
+  const moderation = 1 - Math.abs(politician.ideology)
+  const sameSideButMoreModerate =
+    (bill.lean < 0 && politician.ideology < 0 && politician.ideology > bill.lean) ||
+    (bill.lean > 0 && politician.ideology > 0 && politician.ideology < bill.lean)
+  const moderateDefectionRisk = sameSideButMoreModerate ? moderation * controversy * 0.62 : moderation * controversy * 0.32
+  const broadSkepticism = controversy * 0.18
+
+  return moderateDefectionRisk + broadSkepticism
+}
+
 export function initialVote(politician: Politician, bill: Bill): 'yes' | 'no' {
-  const score = alignmentScore(politician, bill) + stableNoise(`${politician.id}:${bill.title}:initial`) * 0.22 - 0.1
-  return score > 0.58 ? 'yes' : 'no'
+  const score =
+    alignmentScore(politician, bill) +
+    stableNoise(`${politician.id}:${bill.title}:initial`) * 0.18 -
+    0.08 -
+    extremityPenalty(politician, bill)
+
+  return score > 0.62 ? 'yes' : 'no'
 }
 
 function partyConflict(politician: Politician, bill: Bill) {
@@ -31,8 +71,9 @@ export function finalVoteFor(politician: Politician, bill: Bill, startingVote = 
   const susceptibility = 0.4 + clamp(politician.influence, 0, 2) * 0.25
   const alignmentNudge = (alignmentScore(politician, bill) - 0.5) * 0.14
   const partisanPenalty = partyConflict(politician, bill) ? 0.18 : 0
+  const extremityResistance = extremityPenalty(politician, bill) * 0.45
   const noise = (stableNoise(`${politician.id}:${bill.title}:final:${persuasion.toFixed(2)}`) - 0.5) * 0.06
-  const score = startingScore + persuasion * susceptibility + alignmentNudge - partisanPenalty + noise
+  const score = startingScore + persuasion * susceptibility + alignmentNudge - partisanPenalty - extremityResistance + noise
 
   return score > 0 ? 'yes' : 'no'
 }
